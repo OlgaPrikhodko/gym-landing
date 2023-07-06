@@ -29,7 +29,7 @@ const Navbar: React.FC<Props> = ({
   };
 
   return (
-    <nav>
+    <>
       <div
         className={`${navbarBackground} ${flexBetween} fixed top-0 z-30 w-full py-6`}
       >
@@ -40,7 +40,7 @@ const Navbar: React.FC<Props> = ({
             {/* RIGHT SIDE */}
             {/* DESKTOP VERSION */}
             {isAboveMediumScreens ? (
-              <div className={`${flexBetween} w-full`}>
+              <nav className={`${flexBetween} w-full`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
                   <Links
                     selectedPage={selectedPage}
@@ -54,7 +54,7 @@ const Navbar: React.FC<Props> = ({
                     Become a Member
                   </ActionButton>
                 </div>
-              </div>
+              </nav>
             ) : (
               // MOBILE
               <button
@@ -87,7 +87,7 @@ const Navbar: React.FC<Props> = ({
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 
