@@ -16,9 +16,14 @@ type Props = {
 const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
   const flexBetween = "flex items-center justify-between";
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  console.log(isAboveMediumScreens);
 
   const [isMenuToggled, setIsMenuToggled] = useState<boolean>(false);
+
+  const pageNames = ["Home", "Benefits", "Our classes", "Contact Us"];
+
+  const handleMenuButtonClicked = () => {
+    setIsMenuToggled(!isMenuToggled);
+  };
 
   return (
     <nav>
@@ -28,29 +33,18 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
             <img src={Logo} alt="logo" />
 
             {/* RIGHT SIDE */}
+            {/* DESKTOP VERSION */}
             {isAboveMediumScreens ? (
               <div className={`${flexBetween} w-full`}>
                 <div className={`${flexBetween} gap-8 text-sm`}>
-                  <Link
-                    page="Home"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                  <Link
-                    page="Benefits"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                  <Link
-                    page="Our classes"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                  <Link
-                    page="Contact Us"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
+                  {pageNames.map((pageName, index) => (
+                    <Link
+                      key={index}
+                      page={pageName}
+                      selectedPage={selectedPage}
+                      setSelectedPage={setSelectedPage}
+                    />
+                  ))}
                 </div>
 
                 <div className={`${flexBetween} gap-8`}>
@@ -61,9 +55,10 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
                 </div>
               </div>
             ) : (
+              // MOBILE
               <button
                 className="rounded-full bg-secondary-500 p-2"
-                onClick={() => setIsMenuToggled(!isMenuToggled)}
+                onClick={handleMenuButtonClicked}
               >
                 <Bars3Icon className="h-6 w-6 text-white" />
               </button>
@@ -71,6 +66,30 @@ const Navbar = ({ selectedPage, setSelectedPage }: Props) => {
           </div>
         </div>
       </div>
+
+      {/* MOBILE MENU MODAL */}
+      {!isAboveMediumScreens && isMenuToggled && (
+        <div className="fixed bottom-0 right-0 z-40 h-full w-[300px] bg-primary-100 drop-shadow-xl">
+          {/* CLOSE ICON */}
+          <div className="flex justify-end p-12">
+            <button onClick={handleMenuButtonClicked}>
+              <XMarkIcon className="h-6 w-6 text-gray-400" />
+            </button>
+          </div>
+
+          {/* MENU ITEMS */}
+          <div className="ml-[33%] flex flex-col gap-10 text-2xl">
+            {pageNames.map((pageName, index) => (
+              <Link
+                key={index}
+                page={pageName}
+                selectedPage={selectedPage}
+                setSelectedPage={setSelectedPage}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
