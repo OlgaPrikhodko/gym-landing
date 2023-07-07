@@ -4,6 +4,7 @@ import HeroTextBlock from "./HeroTextBlock";
 import HeroSponsors from "./HeroSponsors";
 import HeroActions from "./HeroActions";
 import HeroImage from "./HeroImage";
+import { motion } from "framer-motion";
 
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
@@ -12,7 +13,10 @@ type Props = {
 const Hero: React.FC<Props> = ({ setSelectedPage }) => {
   return (
     <section id="home" className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0">
-      <div className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6">
+      <motion.div
+        className="mx-auto w-5/6 items-center justify-center md:flex md:h-5/6"
+        onViewportEnter={() => setSelectedPage(SelectedPage.Home)}
+      >
         <div className="z-10 mt-32 md:basis-3/5">
           <HeroTextBlock />
 
@@ -20,7 +24,7 @@ const Hero: React.FC<Props> = ({ setSelectedPage }) => {
         </div>
 
         <HeroImage />
-      </div>
+      </motion.div>
 
       <HeroSponsors />
     </section>
