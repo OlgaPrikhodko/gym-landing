@@ -1,4 +1,3 @@
-import HText from "@/shared/HText";
 import { SelectedPage, BenefitType } from "@/shared/types";
 
 import {
@@ -6,8 +5,11 @@ import {
   UserGroupIcon,
   AcademicCapIcon,
 } from "@heroicons/react/24/solid";
+
 import { motion } from "framer-motion";
-import Benefit from "./Benefit";
+
+import BenefitText from "./BenefitText";
+import BenefitList from "./BenefitList";
 
 const benefits: Array<BenefitType> = [
   {
@@ -30,13 +32,6 @@ const benefits: Array<BenefitType> = [
   },
 ];
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.2 },
-  },
-};
-
 type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
@@ -47,43 +42,9 @@ const Benefits: React.FC<Props> = ({ setSelectedPage }) => {
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
       >
-        {/* HEADER */}
-        <motion.div
-          className="md:w-3/5"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.5 }}
-          variants={{
-            hidden: { opacity: 0, x: -50 },
-            visible: { opacity: 1, x: 0 },
-          }}
-        >
-          <HText>More than just a gym.</HText>
+        <BenefitText />
 
-          <p className="mt-5">
-            We provide world class fitness equipment, trainers and classes to
-            get you to your ultimate fitness goals with ease. We provide true
-            care into each and every member.
-          </p>
-        </motion.div>
-
-        {/* BENEFITS */}
-        <motion.div
-          className="mt-5 items-center justify-between gap-8 md:flex"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          variants={container}
-        >
-          {benefits.map((benefit: BenefitType) => (
-            <Benefit
-              key={benefit.title}
-              benefit={benefit}
-              setSelectedPage={setSelectedPage}
-            />
-          ))}
-        </motion.div>
+        <BenefitList benefits={benefits} setSelectedPage={setSelectedPage} />
       </motion.div>
     </section>
   );
