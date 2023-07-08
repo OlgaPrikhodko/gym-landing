@@ -1,5 +1,6 @@
 import { SelectedPage, BenefitType } from "@/shared/types";
 
+
 import {
   HomeModernIcon,
   UserGroupIcon,
@@ -10,6 +11,7 @@ import { motion } from "framer-motion";
 
 import BenefitText from "./BenefitText";
 import BenefitList from "./BenefitList";
+import BenefitsDescription from "./BenefitsDescription";
 
 const benefits: Array<BenefitType> = [
   {
@@ -45,6 +47,9 @@ const Benefits: React.FC<Props> = ({ setSelectedPage }) => {
         <BenefitText />
 
         <BenefitList benefits={benefits} setSelectedPage={setSelectedPage} />
+
+        {/* GRAPHICS AND DESCRIPTION */}
+        <BenefitsDescription />
       </motion.div>
     </section>
   );
