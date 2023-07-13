@@ -1,6 +1,5 @@
 import { SelectedPage, BenefitType } from "@/shared/types";
 
-
 import {
   HomeModernIcon,
   UserGroupIcon,
@@ -9,9 +8,9 @@ import {
 
 import { motion } from "framer-motion";
 
-import BenefitText from "./BenefitText";
 import BenefitList from "./BenefitList";
 import BenefitsDescription from "./BenefitsDescription";
+import HeaderAndText from "@/shared/HeaderAndText";
 
 const benefits: Array<BenefitType> = [
   {
@@ -39,17 +38,21 @@ type Props = {
 };
 
 const Benefits: React.FC<Props> = ({ setSelectedPage }) => {
+  const header = "More than just a gym.";
+  const text = `We provide world class fitness equipment, trainers and classes to get
+  you to your ultimate fitness goals with ease. We provide true care into
+  each and every member.`;
+
   return (
     <section id="benefits" className="mx-auto min-h-full w-5/6 py-20">
       <motion.div
         onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
       >
-        <BenefitText />
+        <HeaderAndText header={header} text={text} />
 
         <BenefitList benefits={benefits} setSelectedPage={setSelectedPage} />
 
-        {/* GRAPHICS AND DESCRIPTION */}
-        <BenefitsDescription />
+        <BenefitsDescription setSelectedPage={setSelectedPage} />
       </motion.div>
     </section>
   );
