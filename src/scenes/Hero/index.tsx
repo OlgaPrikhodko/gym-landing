@@ -5,12 +5,11 @@ import HeroSponsors from "./HeroSponsors";
 import HeroActions from "./HeroActions";
 import HeroImage from "./HeroImage";
 import { motion } from "framer-motion";
+import { useSelectedPage } from "@/contexts/SelectedPageContext";
 
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
+const Hero: React.FC = () => {
+  const { setSelectedPage } = useSelectedPage();
 
-const Hero: React.FC<Props> = ({ setSelectedPage }) => {
   return (
     <section id="home" className="gap-16 bg-gray-20 py-10 md:h-full md:pb-0">
       <motion.div
@@ -20,7 +19,7 @@ const Hero: React.FC<Props> = ({ setSelectedPage }) => {
         <div className="z-10 mt-32 md:basis-3/5">
           <HeroTextBlock />
 
-          <HeroActions setSelectedPage={setSelectedPage} />
+          <HeroActions />
         </div>
 
         <HeroImage />

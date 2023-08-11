@@ -37,7 +37,7 @@ function App() {
       <div className="app bg-gray-20">
         <Navbar isTopOfPage={isTopOfPage} />
         <main>
-          <Hero setSelectedPage={setSelectedPage} />
+          <Hero />
 
           <Benefits setSelectedPage={setSelectedPage} />
 
