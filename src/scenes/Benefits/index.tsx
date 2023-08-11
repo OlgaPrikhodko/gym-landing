@@ -1,4 +1,4 @@
-import { SelectedPage, BenefitType } from "@/shared/types";
+import { motion } from "framer-motion";
 
 import {
   HomeModernIcon,
@@ -6,12 +6,12 @@ import {
   AcademicCapIcon,
 } from "@heroicons/react/24/solid";
 
-import { motion } from "framer-motion";
-
-import BenefitList from "./BenefitList";
-import BenefitsDescription from "./BenefitsDescription";
-import HeaderAndText from "@/shared/HeaderAndText";
+import { SelectedPage, BenefitType } from "@/shared/types";
 import { useSelectedPage } from "@/contexts/SelectedPageContext";
+
+import BenefitsDescription from "./BenefitsDescription";
+import BenefitList from "./BenefitList";
+import HeaderAndText from "@/shared/HeaderAndText";
 
 const benefits: Array<BenefitType> = [
   {
@@ -48,9 +48,7 @@ const Benefits: React.FC = () => {
         onViewportEnter={() => setSelectedPage(SelectedPage.Benefits)}
       >
         <HeaderAndText header={header} text={text} />
-
-        <BenefitList benefits={benefits} setSelectedPage={setSelectedPage} />
-
+        <BenefitList benefits={benefits} />
         <BenefitsDescription />
       </motion.div>
     </section>

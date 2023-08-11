@@ -39,7 +39,7 @@ function App() {
         <main>
           <Hero />
 
-          <Benefits setSelectedPage={setSelectedPage} />
+          <Benefits />
 
           <OurClasses setSelectedPage={setSelectedPage} />
 

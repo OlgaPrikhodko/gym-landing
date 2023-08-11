@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
+import { BenefitType } from "@/shared/types";
 import Benefit from "./Benefit";
-import { BenefitType, SelectedPage } from "@/shared/types";
 
 const container = {
   hidden: {},
@@ -11,10 +11,9 @@ const container = {
 
 type Props = {
   benefits: BenefitType[];
-  setSelectedPage: (value: SelectedPage) => void;
 };
 
-const BenefitList = ({ benefits, setSelectedPage }: Props) => {
+const BenefitList = ({ benefits }: Props) => {
   return (
     <motion.div
       className="mt-5 items-center justify-between gap-8 md:flex"
@@ -24,11 +23,7 @@ const BenefitList = ({ benefits, setSelectedPage }: Props) => {
       variants={container}
     >
       {benefits.map((benefit: BenefitType) => (
-        <Benefit
-          key={benefit.title}
-          benefit={benefit}
-          setSelectedPage={setSelectedPage}
-        />
+        <Benefit key={benefit.title} benefit={benefit} />
       ))}
     </motion.div>
   );
