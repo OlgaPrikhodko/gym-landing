@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
 
-import SelectedPageProvider from "./contexts/SelectedPageContext";
+import SelectedPageProvider, {
+  useSelectedPage,
+} from "./contexts/SelectedPageContext";
 
 import Benefits from "@/scenes/Benefits";
 import ContactUs from "@/scenes/ContactUs";
@@ -11,9 +13,7 @@ import Navbar from "@/scenes/navbar";
 import OurClasses from "@/scenes/OurClasses";
 
 function App() {
-  const [selectedPage, setSelectedPage] = useState<SelectedPage>(
-    SelectedPage.Home
-  );
+  const { setSelectedPage } = useSelectedPage();
 
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
 
@@ -30,7 +30,7 @@ function App() {
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [setSelectedPage]);
 
   return (
     <SelectedPageProvider>
@@ -38,13 +38,9 @@ function App() {
         <Navbar isTopOfPage={isTopOfPage} />
         <main>
           <Hero />
-
           <Benefits />
-
           <OurClasses />
-
           <ContactUs />
-
           <Footer />
         </main>
       </div>

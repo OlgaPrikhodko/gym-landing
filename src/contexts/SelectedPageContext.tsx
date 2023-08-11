@@ -19,7 +19,7 @@ const SelectedPageContext = createContext<SelectedPageContextType>(
 
 type SelectedPageProviderProps = { children: React.ReactNode };
 
-export const SelectedPageProvider: React.FC<SelectedPageProviderProps> = ({
+const SelectedPageProvider: React.FC<SelectedPageProviderProps> = ({
   children,
 }) => {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -40,6 +40,6 @@ export const SelectedPageProvider: React.FC<SelectedPageProviderProps> = ({
 
 const useSelectedPage = () => useContext(SelectedPageContext);
 
-export { SelectedPageContext, useSelectedPage };
+export { useSelectedPage };
 
 export default SelectedPageProvider;
