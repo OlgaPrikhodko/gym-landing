@@ -1,13 +1,9 @@
 import ActionButton from "@/shared/ActionButton";
-import { SelectedPage } from "@/shared/types";
+
 import { motion } from "framer-motion";
 import LearnMoreLink from "@/shared/LearnMoreLink";
 
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
-
-const HeroActions: React.FC<Props> = ({ setSelectedPage }) => {
+const HeroActions: React.FC = () => {
   return (
     <>
       <motion.div
@@ -23,7 +19,7 @@ const HeroActions: React.FC<Props> = ({ setSelectedPage }) => {
       >
         <ActionButton>Join Now</ActionButton>
 
-        <LearnMoreLink setSelectedPage={setSelectedPage} />
+        <LearnMoreLink />
       </motion.div>
     </>
   );

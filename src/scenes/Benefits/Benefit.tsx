@@ -1,5 +1,5 @@
 import LearnMoreLink from "@/shared/LearnMoreLink";
-import { BenefitType, SelectedPage } from "@/shared/types";
+import { BenefitType } from "@/shared/types";
 import { motion } from "framer-motion";
 
 const childVariant = {
@@ -9,11 +9,11 @@ const childVariant = {
 
 type Props = {
   benefit: BenefitType;
-  setSelectedPage: (value: SelectedPage) => void;
 };
 
-const Benefit: React.FC<Props> = ({ benefit, setSelectedPage }) => {
+const Benefit: React.FC<Props> = ({ benefit }) => {
   const { icon, title, description } = benefit;
+
   return (
     <motion.div
       className="mt-5 rounded-md border-[1px] border-gray-100 px-5 py-16 text-center drop-shadow"
@@ -26,10 +26,8 @@ const Benefit: React.FC<Props> = ({ benefit, setSelectedPage }) => {
       </div>
 
       <h4 className="font-bold">{title}</h4>
-
       <p className="m-3">{description}</p>
-
-      <LearnMoreLink setSelectedPage={setSelectedPage} />
+      <LearnMoreLink />
     </motion.div>
   );
 };

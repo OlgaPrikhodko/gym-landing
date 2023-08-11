@@ -1,20 +1,19 @@
-import AnchorLink from "react-anchor-link-smooth-scroll"
-import { SelectedPage } from "./types"
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import { SelectedPage } from "./types";
+import { useSelectedPage } from "@/contexts/SelectedPageContext";
 
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void
-}
+function LearnMoreLink() {
+  const { setSelectedPage } = useSelectedPage();
 
-function LearnMoreLink({setSelectedPage}: Props) {
   return (
     <AnchorLink
-    className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
-    onClick={() => setSelectedPage(SelectedPage.ContactUs)}
-    href={`#${SelectedPage.ContactUs}`}
-  >
-    <p>Learn More</p>
-  </AnchorLink>
-  )
+      className="text-sm font-bold text-primary-500 underline hover:text-secondary-500"
+      onClick={() => setSelectedPage(SelectedPage.ContactUs)}
+      href={`#${SelectedPage.ContactUs}`}
+    >
+      <p>Learn More</p>
+    </AnchorLink>
+  );
 }
 
-export default LearnMoreLink
+export default LearnMoreLink;
