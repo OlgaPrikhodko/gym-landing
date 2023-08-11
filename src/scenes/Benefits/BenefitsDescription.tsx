@@ -1,14 +1,9 @@
+import { motion } from "framer-motion";
 import BenefitsPageGraphic from "@/assets/BenefitsPageGraphic.png";
 import HText from "@/shared/HText";
 import ActionButton from "@/shared/ActionButton";
-import { motion } from "framer-motion";
-import { SelectedPage } from "@/shared/types";
 
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
-
-const BenefitsDescription = ({ setSelectedPage }: Props) => {
+const BenefitsDescription = () => {
   return (
     <div className="mt-16 items-center justify-between gap-20 md:mt-28 md:flex">
       <img
@@ -63,9 +58,7 @@ const BenefitsDescription = ({ setSelectedPage }: Props) => {
 
         <div className="relative mt-16">
           <div className="before:absolute before:-bottom-20 before:right-40 before:z-[-1] before:content-sparkles">
-            <ActionButton setSelectedPage={setSelectedPage}>
-              Join Now
-            </ActionButton>
+            <ActionButton>Join Now</ActionButton>
           </div>
         </div>
       </div>

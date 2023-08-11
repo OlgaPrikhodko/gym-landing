@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 import BenefitList from "./BenefitList";
 import BenefitsDescription from "./BenefitsDescription";
 import HeaderAndText from "@/shared/HeaderAndText";
+import { useSelectedPage } from "@/contexts/SelectedPageContext";
 
 const benefits: Array<BenefitType> = [
   {
@@ -33,11 +34,9 @@ const benefits: Array<BenefitType> = [
   },
 ];
 
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
+const Benefits: React.FC = () => {
+  const { setSelectedPage } = useSelectedPage();
 
-const Benefits: React.FC<Props> = ({ setSelectedPage }) => {
   const header = "More than just a gym.";
   const text = `We provide world class fitness equipment, trainers and classes to get
   you to your ultimate fitness goals with ease. We provide true care into
@@ -52,7 +51,7 @@ const Benefits: React.FC<Props> = ({ setSelectedPage }) => {
 
         <BenefitList benefits={benefits} setSelectedPage={setSelectedPage} />
 
-        <BenefitsDescription setSelectedPage={setSelectedPage} />
+        <BenefitsDescription />
       </motion.div>
     </section>
   );

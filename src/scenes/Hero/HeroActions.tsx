@@ -1,5 +1,4 @@
 import ActionButton from "@/shared/ActionButton";
-import AnchorLink from "react-anchor-link-smooth-scroll";
 import { SelectedPage } from "@/shared/types";
 import { motion } from "framer-motion";
 import LearnMoreLink from "@/shared/LearnMoreLink";
@@ -22,7 +21,7 @@ const HeroActions: React.FC<Props> = ({ setSelectedPage }) => {
           visible: { opacity: 1, x: 0 },
         }}
       >
-        <ActionButton setSelectedPage={setSelectedPage}>Join Now</ActionButton>
+        <ActionButton>Join Now</ActionButton>
 
         <LearnMoreLink setSelectedPage={setSelectedPage} />
       </motion.div>
