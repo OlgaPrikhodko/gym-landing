@@ -1,20 +1,15 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import Links from "./Links";
-import { SelectedPage } from "@/shared/types";
 
 type Props = {
   handleMenuButtonClicked: () => void;
   isMenuToggled: boolean;
-  selectedPage: SelectedPage;
-  setSelectedPage: (value: SelectedPage) => void;
 };
 
 const MobileMenuModal: React.FC<Props> = ({
   handleMenuButtonClicked,
   isMenuToggled,
-  selectedPage,
-  setSelectedPage,
 }) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
 
@@ -31,10 +26,7 @@ const MobileMenuModal: React.FC<Props> = ({
 
           {/* MENU ITEMS */}
           <div className="ml-[33%] flex flex-col gap-10 text-2xl">
-            <Links
-              selectedPage={selectedPage}
-              setSelectedPage={setSelectedPage}
-            />
+            <Links />
           </div>
         </div>
       )}

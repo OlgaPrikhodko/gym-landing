@@ -1,24 +1,16 @@
 import { useState } from "react";
 
-import { Bars3Icon } from "@heroicons/react/24/solid";
-
-import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import MobileMenuModal from "./MobileMenuModal";
 import DesktopNav from "./DesktopNav";
 import NavbarLogo from "./NavbarLogo";
+import MenuNavButton from "./MenuNavButton";
 
 type Props = {
   isTopOfPage: boolean;
-  selectedPage: SelectedPage;
-  setSelectedPage: (value: SelectedPage) => void;
 };
 
-const Navbar: React.FC<Props> = ({
-  isTopOfPage,
-  selectedPage,
-  setSelectedPage,
-}) => {
+const Navbar: React.FC<Props> = ({ isTopOfPage }) => {
   const navbarBackground = isTopOfPage ? "" : "bg-primary-100 drop-shadow";
   const flexBetween = "flex items-center justify-between";
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
@@ -40,18 +32,10 @@ const Navbar: React.FC<Props> = ({
 
             {/* DESKTOP VERSION */}
             {isAboveMediumScreens ? (
-              <DesktopNav
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
+              <DesktopNav />
             ) : (
               // MOBILE VERSION
-              <button
-                className="rounded-full bg-secondary-500 p-2"
-                onClick={handleMenuButtonClicked}
-              >
-                <Bars3Icon className="h-6 w-6 text-white" />
-              </button>
+              <MenuNavButton onClick={handleMenuButtonClicked} />
             )}
           </div>
         </div>
@@ -60,8 +44,6 @@ const Navbar: React.FC<Props> = ({
       <MobileMenuModal
         handleMenuButtonClicked={handleMenuButtonClicked}
         isMenuToggled={isMenuToggled}
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
       />
     </>
   );

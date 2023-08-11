@@ -35,11 +35,7 @@ function App() {
   return (
     <SelectedPageProvider>
       <div className="app bg-gray-20">
-        <Navbar
-          isTopOfPage={isTopOfPage}
-          selectedPage={selectedPage}
-          setSelectedPage={setSelectedPage}
-        />
+        <Navbar isTopOfPage={isTopOfPage} />
         <main>
           <Hero setSelectedPage={setSelectedPage} />
 
