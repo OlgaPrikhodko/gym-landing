@@ -1,11 +1,14 @@
-import Navbar from "@/scenes/navbar";
 import { useEffect, useState } from "react";
 import { SelectedPage } from "@/shared/types";
-import Hero from "./scenes/Hero";
-import Benefits from "./scenes/Benefits";
-import OurClasses from "./scenes/OurClasses";
-import ContactUs from "./scenes/ContactUs";
-import Footer from "./scenes/Footer";
+
+import SelectedPageProvider from "./contexts/SelectedPageContext";
+
+import Benefits from "@/scenes/Benefits";
+import ContactUs from "@/scenes/ContactUs";
+import Footer from "@/scenes/Footer";
+import Hero from "@/scenes/Hero";
+import Navbar from "@/scenes/navbar";
+import OurClasses from "@/scenes/OurClasses";
 
 function App() {
   const [selectedPage, setSelectedPage] = useState<SelectedPage>(
@@ -30,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <SelectedPageProvider>
       <div className="app bg-gray-20">
         <Navbar
           isTopOfPage={isTopOfPage}
@@ -49,7 +52,7 @@ function App() {
           <Footer />
         </main>
       </div>
-    </>
+    </SelectedPageProvider>
   );
 }
 
