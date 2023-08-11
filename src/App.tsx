@@ -41,9 +41,9 @@ function App() {
 
           <Benefits />
 
-          <OurClasses setSelectedPage={setSelectedPage} />
+          <OurClasses />
 
-          <ContactUs setSelectedPage={setSelectedPage} />
+          <ContactUs />
 
           <Footer />
         </main>
